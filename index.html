@@ -191,6 +191,26 @@
   }
   .proof-item .lbl{font-size:13.5px;color:var(--neutral-600);margin-top:4px;font-weight:600;}
 
+  .clients{
+    padding:36px 24px 8px;text-align:center;
+  }
+  .clients .kicker{
+    color:var(--green-700);font-weight:700;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:14px;
+  }
+  .clients-list{
+    max-width:720px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;
+  }
+  .client-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 18px;border-radius:999px;background:#fff;
+    border:1px solid var(--neutral-200);text-decoration:none;
+    color:var(--green-900);font-weight:700;font-size:15px;
+    box-shadow:var(--shadow);transition:border-color .15s ease, transform .15s ease;
+  }
+  .client-chip:hover{border-color:var(--green-300);transform:translateY(-1px);color:var(--green-700);}
+  .client-chip span{font-weight:600;color:var(--neutral-500);font-size:13px;}
+
   section{padding:72px 24px;}
   .section-head{max-width:700px;margin:0 auto 40px;text-align:center;}
   .section-head .kicker{
@@ -475,6 +495,15 @@
     </div>
   </div>
 </div>
+
+<section class="clients" id="clients" aria-label="Clients">
+  <div class="kicker">Our client</div>
+  <div class="clients-list">
+    <a class="client-chip" href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">
+      Rajshree Sugars and Chemicals Ltd <span>(RSCL)</span>
+    </a>
+  </div>
+</section>
 
 <section id="product">
   <div class="product-band">
