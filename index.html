@@ -340,11 +340,13 @@
   .shot-caption{padding:14px 18px;font-size:14.5px;font-weight:600;color:var(--neutral-700);}
   .showcase-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
   .showcase-row.uneven{grid-template-columns:1.6fr 1fr;}
+  .showcase-row.mobile-row{grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
   .shot-card.mobile-card{
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:#fff;padding:20px 20px 0;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    background:#fff;padding:16px 12px 0;
   }
-  .shot-card.mobile-card img{width:auto;max-width:100%;max-height:340px;border-radius:8px;}
+  .shot-card.mobile-card img{width:auto;max-width:100%;max-height:320px;border-radius:8px;object-fit:contain;}
+  .shot-card.mobile-card .shot-caption{text-align:center;font-size:13px;padding:12px 10px;}
 
   .proof-shot{max-width:1000px;margin:0 auto;}
   .proof-shot .shot-card img{width:100%;height:auto;}
@@ -429,6 +431,7 @@
     nav.links,.nav-actions .btn-ghost{display:none;}
     .menu-btn{display:inline-flex;}
     .showcase-row,.showcase-row.uneven{grid-template-columns:1fr;}
+    .showcase-row.mobile-row{grid-template-columns:1fr 1fr;}
     .pillars,.workflow{grid-template-columns:1fr 1fr;}
     .hero-inner{padding:100px 20px 40px;}
     .cta-banner{flex-direction:column;text-align:left;}
@@ -652,14 +655,22 @@
       <img src="assets/fieldmap.png" width="1138" height="576" loading="lazy" alt="Web dashboard field map with crop health markers across mapped plots" />
       <div class="shot-caption">Web Dashboard — Field Map, colour-coded by crop health across the mill area</div>
     </div>
-    <div class="showcase-row">
+    <div class="showcase-row mobile-row">
       <div class="shot-card mobile-card">
         <img src="assets/shot_mobile_map.png" width="320" height="640" loading="lazy" alt="Mobile app Field Map showing mapped plots by health status on satellite view" />
-        <div class="shot-caption">Mobile App — Field Map for officers on the ground</div>
+        <div class="shot-caption">Mobile App — Field Map</div>
       </div>
       <div class="shot-card mobile-card">
         <img src="assets/shot_mobile_scout.png" width="320" height="640" loading="lazy" alt="Mobile Scout screen listing Need Attention and Serious fields with overdue follow-ups" />
-        <div class="shot-caption">Mobile App — Scout list for Need Attention &amp; Serious fields</div>
+        <div class="shot-caption">Mobile App — Scout list</div>
+      </div>
+      <div class="shot-card mobile-card">
+        <img src="assets/Dashboardview.png" width="320" height="640" loading="lazy" alt="Mobile dashboard view of field health and status summary" />
+        <div class="shot-caption">Mobile App — Dashboard view</div>
+      </div>
+      <div class="shot-card mobile-card">
+        <img src="assets/scout_checklist.png" width="320" height="640" loading="lazy" alt="Mobile Scout checklist for field observations" />
+        <div class="shot-caption">Mobile App — Scout checklist</div>
       </div>
     </div>
     <div class="showcase-row">
