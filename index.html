@@ -340,7 +340,10 @@
   .shot-caption{padding:14px 18px;font-size:14.5px;font-weight:600;color:var(--neutral-700);}
   .showcase-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
   .showcase-row.uneven{grid-template-columns:1.6fr 1fr;}
-  .showcase-row.mobile-row{grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
+  .showcase-row.trends-row{grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  .showcase-row.trends-row .shot-card{box-shadow:none;}
+  .showcase-row.trends-row .shot-card img{width:100%;height:auto;max-height:220px;object-fit:contain;}
+  .showcase-row.trends-row .shot-caption{padding:10px 12px;font-size:13px;}
   .shot-card.mobile-card{
     display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
     background:#fff;padding:16px 12px 0;
@@ -655,6 +658,16 @@
       <img src="assets/fieldmap.png" width="1138" height="576" loading="lazy" alt="Web dashboard field map with crop health markers across mapped plots" />
       <div class="shot-caption">Web Dashboard — Field Map, colour-coded by crop health across the mill area</div>
     </div>
+    <div class="showcase-row trends-row">
+      <div class="shot-card">
+        <img src="assets/trend1.png" width="960" height="445" loading="lazy" alt="NDVI trend chart for a good performing plot" />
+        <div class="shot-caption">NDVI Trend — Good performing plot</div>
+      </div>
+      <div class="shot-card">
+        <img src="assets/trend2.png" width="1044" height="411" loading="lazy" alt="NDVI trend chart for a need-attention plot" />
+        <div class="shot-caption">NDVI Trend — Need Attention plot</div>
+      </div>
+    </div>
     <div class="showcase-row mobile-row">
       <div class="shot-card mobile-card">
         <img src="assets/shot_mobile_map.png" width="320" height="640" loading="lazy" alt="Mobile app Field Map showing mapped plots by health status on satellite view" />
@@ -671,16 +684,6 @@
       <div class="shot-card mobile-card">
         <img src="assets/scout_checklist.png" width="320" height="640" loading="lazy" alt="Mobile Scout checklist for field observations" />
         <div class="shot-caption">Mobile App — Scout checklist</div>
-      </div>
-    </div>
-    <div class="showcase-row">
-      <div class="shot-card">
-        <img src="assets/shot_trend_good.png" width="800" height="480" loading="lazy" alt="NDVI trend chart for a good performing plot across germination, early tiller, and tillering" />
-        <div class="shot-caption">NDVI Trend — Good performing plot</div>
-      </div>
-      <div class="shot-card">
-        <img src="assets/shot_trend_attention.png" width="800" height="480" loading="lazy" alt="NDVI trend chart for a need-attention plot running below stage thresholds" />
-        <div class="shot-caption">NDVI Trend — Need Attention plot</div>
       </div>
     </div>
   </div>
