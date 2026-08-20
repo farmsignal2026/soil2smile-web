@@ -21,7 +21,7 @@
 <link rel="icon" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
 <style>
   :root{
@@ -46,6 +46,7 @@
     --radius-lg:22px;
     --shadow: 0 10px 30px rgba(15,40,22,0.08);
     --font-display:"Fraunces", Georgia, serif;
+    --font-brand:"Syne", "Manrope", system-ui, sans-serif;
     --font-body:"Manrope", system-ui, sans-serif;
   }
   *{box-sizing:border-box;}
@@ -154,9 +155,9 @@
     padding:120px 24px 56px;
   }
   .hero-brand{
-    font-family:var(--font-display);
+    font-family:var(--font-brand);
     font-size:clamp(42px, 7vw, 72px);
-    font-weight:700;line-height:1.02;letter-spacing:-0.03em;
+    font-weight:800;line-height:1.02;letter-spacing:-0.04em;
     margin:0 0 10px;
     animation:riseIn .7s ease both;
   }
@@ -489,7 +490,7 @@
   </div>
   <div class="hero-inner">
     <p class="hero-brand">Soil2Smile</p>
-    <h1>Satellite sugarcane monitoring that turns field stress into timely action.</h1>
+    <h1>Satellite based crop health monitoring that turns field stress into timely action.</h1>
     <p class="sub">Right information, at the right time — for mills, field officers, and the growers they serve.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary btn-lg" href="#demo">Request a demo</a>
