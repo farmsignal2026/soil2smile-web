@@ -360,6 +360,13 @@
 
   .proof-shot{max-width:1000px;margin:0 auto;}
   .proof-shot .shot-card img{width:100%;height:auto;}
+  .proof-gallery{
+    max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  }
+  .proof-gallery .shot-card{margin:0;}
+  @media (max-width:720px){
+    .proof-gallery{grid-template-columns:1fr;}
+  }
 
   .outcomes{
     max-width:1120px;margin:0 auto;
@@ -745,12 +752,16 @@
   <div class="section-head">
     <div class="kicker">Validation</div>
     <h2>What the satellite flags, the officer confirms</h2>
-    <p>Left: satellite health on the field map. Right: the scout’s ground photo of the same stressed zone.</p>
+    <p>Satellite health on the field map, confirmed by the scout’s ground photo of the same stressed zone.</p>
   </div>
-  <div class="proof-shot">
+  <div class="proof-gallery">
     <div class="shot-card">
       <img src="assets/scout_verification.jpg" width="816" height="374" loading="lazy" alt="Left: satellite field map highlighting a stressed zone with arrow. Right: scout photo confirming yellowing sugarcane leaves with arrow." />
       <div class="shot-caption">Satellite flags the zone → field scout confirms yellowing sugarcane on the ground</div>
+    </div>
+    <div class="shot-card">
+      <img src="assets/validation2.png" width="653" height="366" loading="lazy" alt="Additional satellite-to-scout validation example for crop stress confirmation" />
+      <div class="shot-caption">Validation example — satellite signal matched by field scout evidence</div>
     </div>
   </div>
 </section>
