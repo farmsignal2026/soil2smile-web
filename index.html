@@ -441,7 +441,10 @@
     nav.links,.nav-actions .btn-ghost{display:none;}
     .menu-btn{display:inline-flex;}
     .showcase-row,.showcase-row.uneven{grid-template-columns:1fr;}
-    .showcase-row.mobile-row{grid-template-columns:1fr 1fr;}
+    .showcase-row.mobile-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+    .shot-card.mobile-card{padding:8px 4px 0;}
+    .shot-card.mobile-card img{max-width:100%;max-height:200px;}
+    .shot-card.mobile-card .shot-caption{font-size:11px;padding:8px 4px;}
     .pillars,.workflow{grid-template-columns:1fr 1fr;}
     .hero-inner{padding:100px 20px 40px;}
     .cta-banner{flex-direction:column;text-align:left;}
