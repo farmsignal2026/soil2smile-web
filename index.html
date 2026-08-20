@@ -194,35 +194,35 @@
   }
   .proof-item .lbl{font-size:13.5px;color:var(--neutral-600);margin-top:4px;font-weight:600;}
 
-  .clients-modal{
-    position:fixed;inset:0;z-index:80;display:none;
-    align-items:center;justify-content:center;
-    padding:24px;background:rgba(15,40,22,0.55);backdrop-filter:blur(4px);
+  .nav-clients{
+    position:relative;
   }
-  .clients-modal.open{display:flex;}
-  .clients-dialog{
-    width:100%;max-width:420px;background:#fff;border-radius:var(--radius-lg);
-    padding:28px 24px 22px;box-shadow:0 20px 50px rgba(15,40,22,0.25);
-    position:relative;text-align:center;
+  .nav-clients > a{
+    font-size:15px;font-weight:600;color:var(--neutral-700);text-decoration:none;
   }
-  .clients-dialog .kicker{
-    color:var(--green-700);font-weight:700;font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;margin-bottom:16px;
+  .nav-clients > a:hover,
+  .nav-clients:focus-within > a{color:var(--green-700);}
+  .nav-clients-panel{
+    position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);
+    min-width:280px;padding:12px 14px;border-radius:12px;background:#fff;
+    border:1px solid var(--neutral-200);box-shadow:var(--shadow);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .15s ease, visibility .15s ease;
+    z-index:60;text-align:left;
   }
-  .clients-dialog .close-btn{
-    position:absolute;top:12px;right:12px;border:none;background:var(--neutral-100);
-    width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:20px;line-height:1;
-    color:var(--neutral-700);
+  .nav-clients-panel::before{
+    content:"";position:absolute;left:0;right:0;top:-12px;height:12px;
   }
-  .client-chip{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:12px 18px;border-radius:999px;background:#fff;
-    border:1px solid var(--neutral-200);text-decoration:none;
-    color:var(--green-900);font-weight:700;font-size:15px;
-    box-shadow:var(--shadow);transition:border-color .15s ease, transform .15s ease;
+  .nav-clients:hover .nav-clients-panel,
+  .nav-clients:focus-within .nav-clients-panel{
+    opacity:1;visibility:visible;pointer-events:auto;
   }
-  .client-chip:hover{border-color:var(--green-300);transform:translateY(-1px);color:var(--green-700);}
-  .client-chip span{font-weight:600;color:var(--neutral-500);font-size:13px;}
+  .nav-clients-panel a{
+    display:block;font-size:14px;font-weight:700;color:var(--green-900);
+    text-decoration:none;line-height:1.35;
+  }
+  .nav-clients-panel a:hover{color:var(--green-700);}
+  .nav-clients-panel span{display:block;font-weight:600;color:var(--neutral-500);font-size:12px;margin-top:2px;}
 
   section{padding:72px 24px;}
   .section-head{max-width:700px;margin:0 auto 40px;text-align:center;}
@@ -448,7 +448,15 @@
     <nav class="links" aria-label="Primary">
       <a href="#product">Product</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#clients" data-open-clients>Our clients</a>
+      <div class="nav-clients">
+        <a href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer" aria-haspopup="true">Our clients</a>
+        <div class="nav-clients-panel">
+          <a href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">
+            Rajshree Sugars and Chemicals Ltd
+            <span>(RSCL)</span>
+          </a>
+        </div>
+      </div>
       <a href="#validation">Validation</a>
       <a href="#about">About</a>
     </nav>
@@ -464,7 +472,7 @@
   <div class="mobile-panel" id="mobile-menu" hidden>
     <a href="#product">Product</a>
     <a href="#how-it-works">How it works</a>
-    <a href="#clients" data-open-clients>Our clients</a>
+    <a href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">Our clients — Rajshree Sugars and Chemicals Ltd (RSCL)</a>
     <a href="#validation">Validation</a>
     <a href="#about">About</a>
     <div class="panel-ctas">
@@ -751,7 +759,7 @@
         <h5>Product</h5>
         <a href="#product">Product</a>
         <a href="#how-it-works">How it works</a>
-        <a href="#clients" data-open-clients>Our clients</a>
+        <a href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">Our clients — RSCL</a>
         <a href="#validation">Validation</a>
         <a href="https://farmsignal.soil2smile.com" target="_blank" rel="noopener noreferrer">Client Login</a>
         <a href="#demo">Request demo</a>
@@ -774,16 +782,6 @@
 
 <div class="mobile-cta" aria-label="Quick actions">
   <a class="btn btn-primary" href="#demo">Request demo</a>
-</div>
-
-<div class="clients-modal" id="clientsModal" role="dialog" aria-modal="true" aria-labelledby="clientsTitle" hidden>
-  <div class="clients-dialog">
-    <button type="button" class="close-btn" id="clientsClose" aria-label="Close">×</button>
-    <div class="kicker" id="clientsTitle">Our clients</div>
-    <a class="client-chip" href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">
-      Rajshree Sugars and Chemicals Ltd <span>(RSCL)</span>
-    </a>
-  </div>
 </div>
 
 <script>
@@ -834,34 +832,6 @@
         slides[slideIndex].classList.add('is-active');
       }, 10000);
     }
-
-    var clientsModal = document.getElementById('clientsModal');
-    function openClients(e) {
-      if (e) e.preventDefault();
-      if (!clientsModal) return;
-      clientsModal.hidden = false;
-      clientsModal.classList.add('open');
-      var closeBtn = document.getElementById('clientsClose');
-      if (closeBtn) closeBtn.focus();
-    }
-    function closeClients() {
-      if (!clientsModal) return;
-      clientsModal.classList.remove('open');
-      clientsModal.hidden = true;
-    }
-    document.querySelectorAll('[data-open-clients]').forEach(function (el) {
-      el.addEventListener('click', openClients);
-    });
-    var clientsClose = document.getElementById('clientsClose');
-    if (clientsClose) clientsClose.addEventListener('click', closeClients);
-    if (clientsModal) {
-      clientsModal.addEventListener('click', function (e) {
-        if (e.target === clientsModal) closeClients();
-      });
-    }
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeClients();
-    });
   })();
 </script>
 
