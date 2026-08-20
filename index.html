@@ -194,15 +194,25 @@
   }
   .proof-item .lbl{font-size:13.5px;color:var(--neutral-600);margin-top:4px;font-weight:600;}
 
-  .clients{
-    padding:36px 24px 8px;text-align:center;
+  .clients-modal{
+    position:fixed;inset:0;z-index:80;display:none;
+    align-items:center;justify-content:center;
+    padding:24px;background:rgba(15,40,22,0.55);backdrop-filter:blur(4px);
   }
-  .clients .kicker{
+  .clients-modal.open{display:flex;}
+  .clients-dialog{
+    width:100%;max-width:420px;background:#fff;border-radius:var(--radius-lg);
+    padding:28px 24px 22px;box-shadow:0 20px 50px rgba(15,40,22,0.25);
+    position:relative;text-align:center;
+  }
+  .clients-dialog .kicker{
     color:var(--green-700);font-weight:700;font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;margin-bottom:14px;
+    text-transform:uppercase;margin-bottom:16px;
   }
-  .clients-list{
-    max-width:720px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;
+  .clients-dialog .close-btn{
+    position:absolute;top:12px;right:12px;border:none;background:var(--neutral-100);
+    width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:20px;line-height:1;
+    color:var(--neutral-700);
   }
   .client-chip{
     display:inline-flex;align-items:center;gap:8px;
@@ -438,7 +448,7 @@
     <nav class="links" aria-label="Primary">
       <a href="#product">Product</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#clients">Our clients</a>
+      <a href="#clients" data-open-clients>Our clients</a>
       <a href="#validation">Validation</a>
       <a href="#about">About</a>
     </nav>
@@ -454,7 +464,7 @@
   <div class="mobile-panel" id="mobile-menu" hidden>
     <a href="#product">Product</a>
     <a href="#how-it-works">How it works</a>
-    <a href="#clients">Our clients</a>
+    <a href="#clients" data-open-clients>Our clients</a>
     <a href="#validation">Validation</a>
     <a href="#about">About</a>
     <div class="panel-ctas">
@@ -501,15 +511,6 @@
     </div>
   </div>
 </div>
-
-<section class="clients" id="clients" aria-label="Clients">
-  <div class="kicker">Our clients</div>
-  <div class="clients-list">
-    <a class="client-chip" href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">
-      Rajshree Sugars and Chemicals Ltd <span>(RSCL)</span>
-    </a>
-  </div>
-</section>
 
 <section id="product">
   <div class="product-band">
@@ -750,7 +751,7 @@
         <h5>Product</h5>
         <a href="#product">Product</a>
         <a href="#how-it-works">How it works</a>
-        <a href="#clients">Our clients</a>
+        <a href="#clients" data-open-clients>Our clients</a>
         <a href="#validation">Validation</a>
         <a href="https://farmsignal.soil2smile.com" target="_blank" rel="noopener noreferrer">Client Login</a>
         <a href="#demo">Request demo</a>
@@ -773,6 +774,16 @@
 
 <div class="mobile-cta" aria-label="Quick actions">
   <a class="btn btn-primary" href="#demo">Request demo</a>
+</div>
+
+<div class="clients-modal" id="clientsModal" role="dialog" aria-modal="true" aria-labelledby="clientsTitle" hidden>
+  <div class="clients-dialog">
+    <button type="button" class="close-btn" id="clientsClose" aria-label="Close">×</button>
+    <div class="kicker" id="clientsTitle">Our clients</div>
+    <a class="client-chip" href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">
+      Rajshree Sugars and Chemicals Ltd <span>(RSCL)</span>
+    </a>
+  </div>
 </div>
 
 <script>
@@ -823,6 +834,34 @@
         slides[slideIndex].classList.add('is-active');
       }, 10000);
     }
+
+    var clientsModal = document.getElementById('clientsModal');
+    function openClients(e) {
+      if (e) e.preventDefault();
+      if (!clientsModal) return;
+      clientsModal.hidden = false;
+      clientsModal.classList.add('open');
+      var closeBtn = document.getElementById('clientsClose');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeClients() {
+      if (!clientsModal) return;
+      clientsModal.classList.remove('open');
+      clientsModal.hidden = true;
+    }
+    document.querySelectorAll('[data-open-clients]').forEach(function (el) {
+      el.addEventListener('click', openClients);
+    });
+    var clientsClose = document.getElementById('clientsClose');
+    if (clientsClose) clientsClose.addEventListener('click', closeClients);
+    if (clientsModal) {
+      clientsModal.addEventListener('click', function (e) {
+        if (e.target === clientsModal) closeClients();
+      });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeClients();
+    });
   })();
 </script>
 
