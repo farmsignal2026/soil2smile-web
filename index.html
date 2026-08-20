@@ -377,6 +377,30 @@
   }
   .about-block p{color:var(--neutral-600);font-size:16.5px;margin:0 0 12px;}
 
+  .contact-panel{
+    max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--neutral-200);
+    border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow);
+  }
+  .contact-panel h3{
+    font-family:var(--font-display);font-size:28px;margin:0 0 8px;color:var(--green-900);
+  }
+  .contact-panel .lead{margin:0 0 22px;color:var(--neutral-600);font-size:15.5px;}
+  .contact-form{display:grid;gap:14px;}
+  .contact-form label{display:block;font-size:13px;font-weight:700;color:var(--neutral-700);margin-bottom:6px;}
+  .contact-form input,
+  .contact-form textarea{
+    width:100%;padding:11px 12px;border:1.5px solid var(--neutral-200);border-radius:10px;
+    font:inherit;font-size:15px;color:var(--neutral-900);background:#fff;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus{outline:none;border-color:var(--green-500);box-shadow:0 0 0 3px rgba(63,154,78,0.15);}
+  .contact-form textarea{min-height:110px;resize:vertical;}
+  .contact-form .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .contact-form .hint{font-size:12.5px;color:var(--neutral-500);margin:4px 0 0;}
+  .contact-form .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px;}
+  .contact-form .status{font-size:14px;font-weight:600;color:var(--green-700);}
+  .contact-form .status.error{color:#b42318;}
+
   .cta-banner{
     max-width:1120px;margin:0 auto;
     background:
@@ -445,6 +469,8 @@
     .shot-card.mobile-card{padding:8px 4px 0;}
     .shot-card.mobile-card img{max-width:100%;max-height:200px;}
     .shot-card.mobile-card .shot-caption{font-size:11px;padding:8px 4px;}
+    .contact-form .row-2{grid-template-columns:1fr;}
+    .contact-panel{padding:28px 20px;}
     .pillars,.workflow{grid-template-columns:1fr 1fr;}
     .hero-inner{padding:100px 20px 40px;}
     .cta-banner{flex-direction:column;text-align:left;}
@@ -498,7 +524,7 @@
     <a href="#validation">Validation</a>
     <a href="#about">About</a>
     <div class="panel-ctas">
-      <a class="btn btn-primary" href="#demo">Request demo</a>
+      <a class="btn btn-primary" href="#contact" data-open-contact>Request demo</a>
     </div>
   </div>
 </header>
@@ -514,7 +540,7 @@
     <h1>Satellite based crop health monitoring that turns field stress into timely action.</h1>
     <p class="sub">Right information, at the right time — for farms, field officers, and the growers they serve.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary btn-lg" href="#demo">Request a demo</a>
+      <a class="btn btn-primary btn-lg" href="#contact" data-open-contact>Request a demo</a>
       <a class="btn btn-light btn-lg" href="#how-it-works">How it works</a>
     </div>
     <p class="hero-note">No new hardware to start — plot boundaries in, field intelligence out.</p>
@@ -552,7 +578,7 @@
       <h3><span class="product-name">FarmSignal</span> brings satellite health and scout truth into one picture.</h3>
       <p>Accurate, timely, field-level crop intelligence — from satellite pass to agronomy recommendation. Built with growers and field officers so what’s on screen matches what happens on the ground.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#demo">Request a demo</a>
+        <a class="btn btn-primary" href="#contact" data-open-contact>Request a demo</a>
       </div>
     </div>
     <div class="product-visual">
@@ -761,15 +787,48 @@
   </div>
 </section>
 
-<section id="demo">
-  <div class="cta-banner">
-    <div>
-      <h3>See FarmSignal on your farm area</h3>
-      <p>Request a walkthrough for your farm, plantation, mill, or FPO — Client Login is available in the top bar.</p>
-    </div>
-    <div class="cta-actions">
-      <a class="btn btn-primary btn-lg" href="mailto:contact@soil2smile.com?subject=FarmSignal%20demo%20request">Request a demo</a>
-    </div>
+<section id="contact">
+  <div class="contact-panel">
+    <h3>Request a demo / Contact us</h3>
+    <p class="lead">Tell us a little about your organization — we’ll get back to you by email.</p>
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/contact@soil2smile.com" method="POST">
+      <input type="hidden" name="_subject" value="Soil2Smile website — demo / contact request" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
+
+      <div class="row-2">
+        <div>
+          <label for="contactName">Name *</label>
+          <input id="contactName" name="name" type="text" required autocomplete="name" placeholder="Your full name" />
+        </div>
+        <div>
+          <label for="contactEmail">Email *</label>
+          <input id="contactEmail" name="email" type="email" required autocomplete="email" placeholder="you@organization.com" />
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div>
+          <label for="contactOrg">Organization *</label>
+          <input id="contactOrg" name="organization" type="text" required autocomplete="organization" placeholder="Farm, mill, FPO, or company" />
+        </div>
+        <div>
+          <label for="contactLocation">Location *</label>
+          <input id="contactLocation" name="location" type="text" required placeholder="City / District / State" />
+        </div>
+      </div>
+
+      <div>
+        <label for="contactPurpose">Purpose of contact *</label>
+        <textarea id="contactPurpose" name="purpose" required placeholder="Short description — e.g. demo request, crop area, number of plots, timeline"></textarea>
+        <p class="hint">This message is sent to contact@soil2smile.com</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary btn-lg" type="submit" id="contactSubmit">Send message</button>
+        <span class="status" id="contactStatus" role="status" aria-live="polite"></span>
+      </div>
+    </form>
   </div>
 </section>
 </main>
@@ -791,7 +850,7 @@
         <a href="https://www.rajshreesugars.com/" target="_blank" rel="noopener noreferrer">Our clients — RSCL</a>
         <a href="#validation">Validation</a>
         <a href="https://farmsignal.soil2smile.com" target="_blank" rel="noopener noreferrer">Client Login</a>
-        <a href="#demo">Request demo</a>
+        <a href="#contact" data-open-contact>Request demo</a>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
@@ -799,6 +858,7 @@
       </div>
       <div class="footer-col">
         <h5>Get in touch</h5>
+        <a href="#contact" data-open-contact>Contact form</a>
         <a href="mailto:contact@soil2smile.com">contact@soil2smile.com</a>
         <span>India</span>
       </div>
@@ -810,7 +870,7 @@
 </footer>
 
 <div class="mobile-cta" aria-label="Quick actions">
-  <a class="btn btn-primary" href="#demo">Request demo</a>
+  <a class="btn btn-primary" href="#contact" data-open-contact>Request demo</a>
 </div>
 
 <script>
@@ -860,6 +920,45 @@
         slideIndex = (slideIndex + 1) % slides.length;
         slides[slideIndex].classList.add('is-active');
       }, 10000);
+    }
+
+    var contactForm = document.getElementById('contactForm');
+    var contactStatus = document.getElementById('contactStatus');
+    var contactSubmit = document.getElementById('contactSubmit');
+    document.querySelectorAll('[data-open-contact]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var form = document.getElementById('contact');
+        if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (contactStatus) {
+          contactStatus.textContent = 'Sending…';
+          contactStatus.classList.remove('error');
+        }
+        if (contactSubmit) contactSubmit.disabled = true;
+        var data = new FormData(contactForm);
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        }).then(function (res) {
+          if (!res.ok) throw new Error('Send failed');
+          return res.json().catch(function () { return {}; });
+        }).then(function () {
+          contactForm.reset();
+          if (contactStatus) contactStatus.textContent = 'Sent — we will reply by email soon.';
+        }).catch(function () {
+          if (contactStatus) {
+            contactStatus.textContent = 'Could not send. Email us at contact@soil2smile.com';
+            contactStatus.classList.add('error');
+          }
+        }).finally(function () {
+          if (contactSubmit) contactSubmit.disabled = false;
+        });
+      });
     }
   })();
 </script>
