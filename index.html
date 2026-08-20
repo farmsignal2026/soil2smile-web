@@ -336,7 +336,7 @@
     background:#fff;border:1px solid var(--neutral-200);border-radius:var(--radius-md);
     overflow:hidden;box-shadow:var(--shadow);
   }
-  .shot-card img{width:100%;}
+  .shot-card img{width:100%;height:auto;display:block;object-fit:contain;}
   .shot-caption{padding:14px 18px;font-size:14.5px;font-weight:600;color:var(--neutral-700);}
   .showcase-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
   .showcase-row.uneven{grid-template-columns:1.6fr 1fr;}
@@ -649,7 +649,7 @@
   </div>
   <div class="showcase">
     <div class="shot-card">
-      <img src="assets/shot_web_map.png" width="1200" height="700" loading="lazy" alt="Web dashboard field map with Good, Moderate, Need Attention, and Serious plot markers across many fields" />
+      <img src="assets/fieldmap.png" width="1138" height="576" loading="lazy" alt="Web dashboard field map with crop health markers across mapped plots" />
       <div class="shot-caption">Web Dashboard — Field Map, colour-coded by crop health across the mill area</div>
     </div>
     <div class="showcase-row">
